@@ -1,0 +1,1 @@
+<?php require_once __DIR__ . '/includes/auth.php'; if (!empty($_SESSION['user'])) redirect($_SESSION['user']['role'] === 'hod' ? '/hod/dashboard.php' : '/lecturer/dashboard.php'); redirect('/login.php');

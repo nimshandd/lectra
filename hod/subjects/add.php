@@ -1,0 +1,6 @@
+<?php
+require_once __DIR__ . '/../../includes/auth.php'; requireHOD(); $p=db(); $d=$_SESSION['user']['department_id']; $error='';
+if ($_SERVER['REQUEST_METHOD']==='POST') { verifyCsrf(); try { $p->prepare('INSERT INTO subjects(department_id,semester_id,subject_code,subject_name) VALUES(?,?,?,?)')->execute([$d,(int)$_POST['semester_id'],trim($_POST['code']),trim($_POST['name'])]); flash('Subject created.'); redirect('/hod/subjects/index.php'); } catch(PDOException $e) {$error='Subject code already exists.';} }
+$semesters=$p->query('SELECT * FROM semesters ORDER BY semester_number')->fetchAll(); $title='Add Subject'; require __DIR__.'/../../includes/header.php'; ?>
+<section class="panel"><h2>Add Subject</h2><?php if($error):?><div class="alert error"><?=e($error)?></div><?php endif?><form method="post"><input type="hidden" name="csrf" value="<?=csrf()?>"><label>Semester<select name="semester_id" required><?php foreach($semesters as $sem):?><option value="<?=$sem['id']?>"><?=e($sem['semester_name'])?></option><?php endforeach?></select></label><label>Subject Code<input name="code" required></label><label>Subject Name<input name="name" required></label><button>Save Subject</button></form></section>
+<?php require __DIR__.'/../../includes/footer.php'; ?>

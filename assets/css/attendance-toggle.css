@@ -1,0 +1,9 @@
+/* Attendance marking control. Values and data attributes match script.js. */
+.attendance-toggle{min-width:108px;min-height:44px;padding:10px 15px;border:1px solid transparent;border-radius:var(--r-pill);color:#fff;font-weight:750;cursor:pointer;transition:filter .15s,transform .12s,box-shadow .15s}
+.attendance-toggle.is-present{background:var(--green)}
+.attendance-toggle.is-absent{background:var(--red)}
+.attendance-toggle.is-medical{background:var(--blue)}
+.attendance-toggle:active{transform:scale(.98)}
+.attendance-toggle:focus-visible{outline:0;box-shadow:0 0 0 3px rgba(49,95,206,.27)}
+.attendance-toggle:disabled,.attendance-toggle[aria-busy="true"]{opacity:.55;cursor:not-allowed}
+@media(hover:hover){.attendance-toggle:hover{filter:brightness(.94)}}

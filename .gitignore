@@ -1,0 +1,18 @@
+# Local configuration and secrets
+.env
+.env.*
+!.env.example
+
+# Local database/source archives
+database.zip
+
+# Runtime files
+*.log
+uploads/
+tmp/
+.phpunit.result.cache
+
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.vscode/
